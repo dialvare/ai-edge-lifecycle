@@ -9,14 +9,16 @@
       "id": "primary",
       "nodes": [
         {
-          "id": "c2ffcea1-0111-4768-9201-636e2db825d2",
+          "id": "21d8c6d6-122b-4682-976d-c59f292069ea",
           "type": "execution_node",
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
               "dependencies": [],
               "include_subdirectories": false,
-              "outputs": [],
+              "outputs": [
+                "dataset.csv"
+              ],
               "env_vars": [],
               "kubernetes_pod_annotations": [],
               "kubernetes_pod_labels": [],
@@ -24,14 +26,15 @@
               "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
-              "filename": "Collect_data.ipynb"
+              "filename": "Collect_data.ipynb",
+              "runtime_image": "quay.io/modh/runtime-images@sha256:4a8a89054b7f7172f41d38f321f0ee0b20ee782beafe8fac1eb6b76322faa460"
             },
             "label": "",
             "ui_data": {
               "label": "Collect_data.ipynb",
               "image": "/notebook/ai-edge-project/model-training/static/elyra/notebook.svg",
-              "x_pos": 104,
-              "y_pos": 223,
+              "x_pos": 240,
+              "y_pos": 382,
               "description": "Run notebook file"
             }
           },
@@ -65,14 +68,16 @@
           ]
         },
         {
-          "id": "22d4cfd3-4824-412b-bd00-5b3fb0572b64",
+          "id": "09de1903-4043-4bcb-8c2a-6168f588c239",
           "type": "execution_node",
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
               "dependencies": [],
               "include_subdirectories": false,
-              "outputs": [],
+              "outputs": [
+                "model.onnx"
+              ],
               "env_vars": [],
               "kubernetes_pod_annotations": [],
               "kubernetes_pod_labels": [],
@@ -80,14 +85,15 @@
               "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
-              "filename": "Re-train_model.ipynb"
+              "filename": "Re-train_model.ipynb",
+              "runtime_image": "quay.io/modh/runtime-images@sha256:4a8a89054b7f7172f41d38f321f0ee0b20ee782beafe8fac1eb6b76322faa460"
             },
             "label": "",
             "ui_data": {
               "label": "Re-train_model.ipynb",
               "image": "/notebook/ai-edge-project/model-training/static/elyra/notebook.svg",
-              "x_pos": 348,
-              "y_pos": 223,
+              "x_pos": 499,
+              "y_pos": 383,
               "description": "Run notebook file"
             }
           },
@@ -105,8 +111,8 @@
               },
               "links": [
                 {
-                  "id": "2c5b4528-bc8c-4685-b77c-458967adf05b",
-                  "node_id_ref": "c2ffcea1-0111-4768-9201-636e2db825d2",
+                  "id": "dac09aa5-52c9-4b99-9428-185c6e052449",
+                  "node_id_ref": "21d8c6d6-122b-4682-976d-c59f292069ea",
                   "port_id_ref": "outPort"
                 }
               ]
@@ -128,7 +134,7 @@
           ]
         },
         {
-          "id": "ccb4cd79-8acc-4d65-8551-82663a3f075d",
+          "id": "024171cf-8983-449b-b27d-25e3b6c083a7",
           "type": "execution_node",
           "op": "execute-notebook-node",
           "app_data": {
@@ -169,14 +175,15 @@
               "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
-              "filename": "Save_model.ipynb"
+              "filename": "Save_model.ipynb",
+              "runtime_image": "quay.io/modh/runtime-images@sha256:4a8a89054b7f7172f41d38f321f0ee0b20ee782beafe8fac1eb6b76322faa460"
             },
             "label": "",
             "ui_data": {
               "label": "Save_model.ipynb",
               "image": "/notebook/ai-edge-project/model-training/static/elyra/notebook.svg",
-              "x_pos": 587,
-              "y_pos": 223,
+              "x_pos": 747,
+              "y_pos": 382,
               "description": "Run notebook file"
             }
           },
@@ -194,8 +201,8 @@
               },
               "links": [
                 {
-                  "id": "a3c3ce0a-0f37-40d8-b6a3-c34fc583ff23",
-                  "node_id_ref": "22d4cfd3-4824-412b-bd00-5b3fb0572b64",
+                  "id": "93304364-18ad-4bff-a1bb-34766fbff8d1",
+                  "node_id_ref": "09de1903-4043-4bcb-8c2a-6168f588c239",
                   "port_id_ref": "outPort"
                 }
               ]
@@ -224,29 +231,18 @@
         "version": 8,
         "runtime_type": "KUBEFLOW_PIPELINES",
         "properties": {
-          "name": "untitled",
+          "name": "Forecast_model",
           "runtime": "Data Science Pipelines",
+          "pipeline_parameters": [],
           "pipeline_defaults": {
+            "kubernetes_pod_annotations": [],
+            "kubernetes_shared_mem_size": {},
             "kubernetes_pod_labels": [],
             "mounted_volumes": [],
             "kubernetes_tolerations": [],
-            "kubernetes_pod_annotations": [],
-            "kubernetes_shared_mem_size": {},
-            "env_vars": [],
             "kubernetes_secrets": [],
-            "runtime_image": "quay.io/modh/runtime-images@sha256:cee154f6db15de27929362f91baa128fc4f79b9c1930ab0f27561174d39aadfa"
-          },
-          "pipeline_parameters": [
-            {
-              "name": "",
-              "description": "",
-              "default_value": {
-                "type": "String",
-                "value": ""
-              },
-              "required": false
-            }
-          ]
+            "env_vars": []
+          }
         }
       },
       "runtime_ref": ""
