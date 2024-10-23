@@ -9,7 +9,7 @@
       "id": "primary",
       "nodes": [
         {
-          "id": "21d8c6d6-122b-4682-976d-c59f292069ea",
+          "id": "65b3ad81-fada-4228-aebe-3b70efa1072b",
           "type": "execution_node",
           "op": "execute-notebook-node",
           "app_data": {
@@ -17,24 +17,52 @@
               "dependencies": [],
               "include_subdirectories": false,
               "outputs": [
-                "dataset.csv"
+                "training_data/historical.csv",
+                "training_data/sensors_data.csv",
+                "training_data/measured_value.csv"
               ],
               "env_vars": [],
               "kubernetes_pod_annotations": [],
               "kubernetes_pod_labels": [],
-              "kubernetes_secrets": [],
+              "kubernetes_secrets": [
+                {
+                  "env_var": "AWS_ACCESS_KEY_ID",
+                  "name": "aws-connection-s3creds",
+                  "key": "AWS_ACCESS_KEY_ID"
+                },
+                {
+                  "env_var": "AWS_SECRET_ACCESS_KEY",
+                  "name": "aws-connection-s3creds",
+                  "key": "AWS_SECRET_ACCESS_KEY"
+                },
+                {
+                  "env_var": "AWS_S3_ENDPOINT",
+                  "name": "aws-connection-s3creds",
+                  "key": "AWS_S3_ENDPOINT"
+                },
+                {
+                  "env_var": "AWS_DEFAULT_REGION",
+                  "name": "aws-connection-s3creds",
+                  "key": "AWS_DEFAULT_REGION"
+                },
+                {
+                  "env_var": "AWS_S3_BUCKET",
+                  "name": "aws-connection-s3creds",
+                  "key": "AWS_S3_BUCKET"
+                }
+              ],
               "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
-              "filename": "Collect_data.ipynb",
+              "filename": "1.Collect_data.ipynb",
               "runtime_image": "quay.io/modh/runtime-images@sha256:4a8a89054b7f7172f41d38f321f0ee0b20ee782beafe8fac1eb6b76322faa460"
             },
             "label": "",
             "ui_data": {
-              "label": "Collect_data.ipynb",
+              "label": "1.Collect_data.ipynb",
               "image": "/notebook/ai-edge-project/model-training/static/elyra/notebook.svg",
-              "x_pos": 240,
-              "y_pos": 382,
+              "x_pos": 170,
+              "y_pos": 238,
               "description": "Run notebook file"
             }
           },
@@ -68,7 +96,7 @@
           ]
         },
         {
-          "id": "09de1903-4043-4bcb-8c2a-6168f588c239",
+          "id": "15374270-cf27-44ef-8dfa-88336eac3229",
           "type": "execution_node",
           "op": "execute-notebook-node",
           "app_data": {
@@ -76,7 +104,8 @@
               "dependencies": [],
               "include_subdirectories": false,
               "outputs": [
-                "model.onnx"
+                "upload_data/historical.csv",
+                "models/edge/1/model.onnx"
               ],
               "env_vars": [],
               "kubernetes_pod_annotations": [],
@@ -85,15 +114,15 @@
               "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
-              "filename": "Re-train_model.ipynb",
+              "filename": "2.Re-train_model.ipynb",
               "runtime_image": "quay.io/modh/runtime-images@sha256:4a8a89054b7f7172f41d38f321f0ee0b20ee782beafe8fac1eb6b76322faa460"
             },
             "label": "",
             "ui_data": {
-              "label": "Re-train_model.ipynb",
+              "label": "2.Re-train_model.ipynb",
               "image": "/notebook/ai-edge-project/model-training/static/elyra/notebook.svg",
-              "x_pos": 499,
-              "y_pos": 383,
+              "x_pos": 386,
+              "y_pos": 238,
               "description": "Run notebook file"
             }
           },
@@ -111,8 +140,8 @@
               },
               "links": [
                 {
-                  "id": "dac09aa5-52c9-4b99-9428-185c6e052449",
-                  "node_id_ref": "21d8c6d6-122b-4682-976d-c59f292069ea",
+                  "id": "a95df051-2def-4c76-9ae3-9fd872a25a63",
+                  "node_id_ref": "65b3ad81-fada-4228-aebe-3b70efa1072b",
                   "port_id_ref": "outPort"
                 }
               ]
@@ -134,7 +163,99 @@
           ]
         },
         {
-          "id": "024171cf-8983-449b-b27d-25e3b6c083a7",
+          "id": "695df8b8-6bcd-406a-a949-2afd0e2b2d57",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [
+                "upload_data/historical.csv"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [
+                {
+                  "env_var": "AWS_ACCESS_KEY_ID",
+                  "name": "aws-connection-s3creds",
+                  "key": "AWS_ACCESS_KEY_ID"
+                },
+                {
+                  "env_var": "AWS_SECRET_ACCESS_KEY",
+                  "name": "aws-connection-s3creds",
+                  "key": "AWS_SECRET_ACCESS_KEY"
+                },
+                {
+                  "env_var": "AWS_S3_ENDPOINT",
+                  "name": "aws-connection-s3creds",
+                  "key": "AWS_S3_ENDPOINT"
+                },
+                {
+                  "env_var": "AWS_DEFAULT_REGION",
+                  "name": "aws-connection-s3creds",
+                  "key": "AWS_DEFAULT_REGION"
+                },
+                {
+                  "env_var": "AWS_S3_BUCKET",
+                  "name": "aws-connection-s3creds",
+                  "key": "AWS_S3_BUCKET"
+                }
+              ],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "3.Save_model.ipynb",
+              "runtime_image": "quay.io/modh/runtime-images@sha256:4a8a89054b7f7172f41d38f321f0ee0b20ee782beafe8fac1eb6b76322faa460"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "3.Save_model.ipynb",
+              "image": "/notebook/ai-edge-project/model-training/static/elyra/notebook.svg",
+              "x_pos": 608,
+              "y_pos": 239,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "4e9b3b71-4663-47ba-a94b-4ba420dac7f5",
+                  "node_id_ref": "15374270-cf27-44ef-8dfa-88336eac3229",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "022f6b66-65f2-437a-99dc-a400683ce4bc",
           "type": "execution_node",
           "op": "execute-notebook-node",
           "app_data": {
@@ -175,15 +296,15 @@
               "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
-              "filename": "Save_model.ipynb",
+              "filename": "4.Upload_data.ipynb",
               "runtime_image": "quay.io/modh/runtime-images@sha256:4a8a89054b7f7172f41d38f321f0ee0b20ee782beafe8fac1eb6b76322faa460"
             },
             "label": "",
             "ui_data": {
-              "label": "Save_model.ipynb",
+              "label": "4.Upload_data.ipynb",
               "image": "/notebook/ai-edge-project/model-training/static/elyra/notebook.svg",
-              "x_pos": 747,
-              "y_pos": 382,
+              "x_pos": 838,
+              "y_pos": 239,
               "description": "Run notebook file"
             }
           },
@@ -201,8 +322,8 @@
               },
               "links": [
                 {
-                  "id": "93304364-18ad-4bff-a1bb-34766fbff8d1",
-                  "node_id_ref": "09de1903-4043-4bcb-8c2a-6168f588c239",
+                  "id": "9f731bc9-07e9-4c0e-bdff-b7f2782c3163",
+                  "node_id_ref": "695df8b8-6bcd-406a-a949-2afd0e2b2d57",
                   "port_id_ref": "outPort"
                 }
               ]
@@ -233,7 +354,6 @@
         "properties": {
           "name": "Forecast_model",
           "runtime": "Data Science Pipelines",
-          "pipeline_parameters": [],
           "pipeline_defaults": {
             "kubernetes_pod_annotations": [],
             "kubernetes_shared_mem_size": {},
@@ -241,8 +361,10 @@
             "mounted_volumes": [],
             "kubernetes_tolerations": [],
             "kubernetes_secrets": [],
-            "env_vars": []
-          }
+            "env_vars": [],
+            "runtime_image": "quay.io/modh/runtime-images@sha256:4a8a89054b7f7172f41d38f321f0ee0b20ee782beafe8fac1eb6b76322faa460"
+          },
+          "pipeline_parameters": []
         }
       },
       "runtime_ref": ""
