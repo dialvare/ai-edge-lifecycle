@@ -1,0 +1,11 @@
+# Exploring Pre-installed Operators and Setup in our SNO
+
+## Logical Volume Manager Storage (LVMS)
+
+## Authorino
+
+## OpenShift Serverless
+
+## Red Hat OpenShift Service Mesh
+
+## MinIO S3 storage

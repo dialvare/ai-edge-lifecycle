@@ -1,0 +1,34 @@
+# Red Hat OpenShift AI installation
+
+This journey starts from an empty new Single Node OpenShift cluster at the edge, that will be used to develop, train and serve an AI model straight to our device fleet at the far edge.
+
+Taking into account that your OCP node has been already configured to provide some kind of storage and is able to make use of your existing hardware like GPU cards (in case your machine holds any), the first objective will be installing the OpenShift AI operator. 
+
+1. Open the OpenShift Web Console, and navigate to the **Operators** tab on the left panel. Then select **OperatorHub**.
+2. Type `OpenShift AI` to search the component in the operators' catalog.
+3. Select the **Red Hat OpenShift AI** operator and click on **Install**. Make sure that the selected **Version** is **2.11.0** onwards.
+[NOTE]
+====
+Take into account that this article explains the usage of RawDeployment mode on RHOAI self-managed, but these steps are not valid for disconnected self-managed deployments.
+====
+
+[start=4]
+1. The operator will create the `redhat-ods-operator` project. Review the rest of the parameters and press **Install** to start the operator installation.
+2. When the installation finishes, we need to configure the DataScienceCluster custom resource. Select **Create DataScienceCluster**
+3. Once in the configuration page, scroll down and click **Components**. Here you can see a list of all the components that can be enabled/disabled from Red Hat OpenShift AI.
+4. Locate and select the **kserve** component to configure it. Unless otherwise specified, the default deployment mode used by kserve will be Serverless. Change the **defaultDeploymentMode** to **RawDeployment** and verify that the **managementState** shows **Managed**.
+5. Also, under **serving**, we need to modify the KNative-Serving stack used for model serving. As mentioned before, the RawDeployment mode does not use KNative. Therefore, we need to switch the **managementState** to **Removed**. The configuration should look like this:
+6. Keep the rest of the default values and press **Create**.
+7. Wait for the Phase to become *Ready*. This will mean that the operator is successfully configured and can be used.
+8. However, as KServe RawDeployment mode does not require a service mesh for network traffic management, we can disable Red Hat OpenShift Service Mesh. To do so, navigate to the **DSC Initialization** tab, inside our operator.
+9. In the **DSC Initialization** tab, you will see the DSCI resource created during the operator installation. Select **default-dsci**.
+10. At the top, you will see that the resource is still **Progressing**, but if you scroll down, you will see an error message indicating that there was a problem trying to find the Service Mesh Operator subscription.
+11. Click on the **YAML** tab in the details page to modify the resource definition.
+12. Locate the `serviceMesh` component and change the `managementState` field to `Removed`. Then click on **Save**.
+13. Instantly, the DSCInitialization resource will change its status to *Ready*.
+
+Now, we should be able to access the OpenShift AI Web Console. On the right side of the top navigation bar, you will find a square icon formed by 9 smaller squares. Click it and select **Red Hat OpenShift AI** from the dropdown menu:
+
+A new tab will open. Log in again using your OpenShift credentials and you will be redirected to  the Red Hat OpenShift AI landing page. Hereinafter, we will delve into the artificial intelligence world. 
+
+
