@@ -1,5 +1,7 @@
 # Create a DataConnection for Model Serving
 
+At this point, we can use the s3 bucket to store data. In order to make it accessible from our Jupyter environment, we need to create a DataConnection in our node, indicating the set of s3 configuration values. 
+
 Red Hat OpenShift AI creates DataConnection resources as OpenShift secrets. Those secrets store all the configuration values that facilitate connecting datascience projects to object storage buckets. Those buckets can contain either the dataset used for the training or the AI models to be served. Let's configure the DataConnection.
 
 1. Open again the OpenShift AI web console and navigate to the **Data Connections** tab. There, select **Add data connection**.

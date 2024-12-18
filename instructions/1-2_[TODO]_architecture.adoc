@@ -1,0 +1,3 @@
+# Setting the Stage: Exploring Our Infrastructure and Design
+
+This journey starts from an empty new Single Node OpenShift cluster at the edge, that will be used to develop, train and serve an AI model straight to our device fleet at the far edge.

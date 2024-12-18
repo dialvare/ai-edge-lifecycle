@@ -1,8 +1,8 @@
 # Breaking Down Lifecycle Automation with Red Hat OpenShift AI
 
-Our fundamental piece and operational hub will be Red Hat OpenShift AI. RHOAI provides data scientists and developers the possibility to work within a common platform where they can collaborate during the entire model lifecycle, making use of both containerization perks and several machine learning and data analytics capabilities.
+The fundamental piece and operational hub will be the Red Hat OpenShift AI platform, running in our Single Node OpenShift. The RHOAI operator provides data scientists and developers the possibility to work within a common platform where they can collaborate during the entire model lifecycle, making use of both containerization perks and several machine learning and data analytics capabilities.
 
-Red Hat OpenShift AI enables the integration of components that streamline and ensures efficiency automation across every stage of the lifecycle workflow.
+Red Hat OpenShift AI also enables the integration of components that streamline and ensures efficiency automation across every stage of the lifecycle workflow.
 
 ## The Why Behind Every Piece
 
@@ -14,9 +14,9 @@ Red Hat OpenShift AI implements Kubeflow Pipelines 2.0 which uses Argo Workflows
 
 ### Model Serving
 
-Red Hat OpenShift AI leverages KServe to deploy, manage, and scale ML models. This widely-used Kubernetes open-source platform streamlines the complexities of serving ML models by utilizing a standardized inference protocol across various supported ML frameworks.
+Red Hat OpenShift AI relies on KServe to deploy, manage, and scale ML models. This widely-used Kubernetes open-source platform streamlines the complexities of serving ML models by utilizing a standardized inference protocol across various supported ML frameworks.
 
-The ultimate goal of model serving is to make a model available as a service that can be accessed through an API. In the case of deploying large AI models, RHOAI includes a single model serving platform that pulls the model from the S3 bucket, and creates the inference endpoints on the data science projects to allow applications to send inference requests.
+The ultimate goal of model serving is to make a model available as a service that can be accessed through an API. In the case of deploying large AI models, RHOAI includes a single model serving platform that pulls the model from the S3 bucket, and creates the inference endpoints to allow applications to send requests.
 
 ### Model Registry
 
