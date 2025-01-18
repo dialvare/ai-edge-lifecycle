@@ -32,4 +32,4 @@ This capability is especially important at the edge, where dynamic environments 
 
 ## Next section:
 
-Now that we understand the components needed to automate the workflow, it's time to roll up our sleeves and start setting up the infrastructure. In the next chapter, we will review the pre-configuration of our Single Node OpenShift.
+Now that we understand the components needed to automate the workflow, it's time to start the hands-on experience. Let's see what we need to connect and start using our hosts. 

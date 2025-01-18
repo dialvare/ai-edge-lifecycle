@@ -10,4 +10,4 @@ However, the edge environment presents challenges as well. Beyond the typical ne
 
 ## Next section:
 
-Once we understand the limitations we encounter in edge environments and recognize the critical role of automation, in the next section we will explore the most important and necessary components to implement it effectively.
+Once we understand the limitations we encounter in edge environments and recognize the critical role of automation, let's review the architecture and design for this demo. 

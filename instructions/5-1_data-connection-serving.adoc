@@ -1,4 +1,4 @@
-# Create a DataConnection for Model Serving
+# Create a DataConnection to store our model
 
 At this point, we can use the s3 bucket to store data. In order to make it accessible from our Jupyter environment, we need to create a DataConnection in our node, indicating the set of s3 configuration values. 
 
@@ -15,4 +15,8 @@ Red Hat OpenShift AI creates DataConnection resources as OpenShift secrets. Thos
 * **Connected workbench**: Select your workbench here. The one that I used for training the model was `model-training`.
 3. When completed, select **Add data connection**.
 
-A new Secret called `aws-connection-s3creds` will be created in your `ai-edge-project` namespace containing all the specified values stored in base64 format. Now that the s3 storage is attached to our environment, we can proceed with the next step.
+A new Secret called `aws-connection-s3creds` will be created in your `ai-edge-project` namespace containing all the specified values stored in base64 format. 
+
+## Next section:
+
+Now that the s3 storage is attached to our environment, we can proceed with the next step to start using the data connection to store models.
